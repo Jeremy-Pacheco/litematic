@@ -1,7 +1,7 @@
 # Sistema de texturas
 
-> **Estado:** la **carga de los recursos de Minecraft** desde el `client.jar` del usuario está
-> implementada. La resolución de modelos y el atlas (`feature/block-models`) y los resource packs
+> **Estado:** la **carga de los recursos de Minecraft** y la **preparación de modelos y atlas** están
+> implementadas (ver [RENDERING.md](RENDERING.md)). Los resource packs
 > (`feature/texture-packs`) están **pendientes**.
 
 ## Licencia de los recursos
@@ -84,8 +84,17 @@ Arranque ─► assets.init() ─► loadAssetsSummary() (meta + lang)
 - **Nombres oficiales** en la lista de materiales: `block.minecraft.<id>` o `item.minecraft.<id>`.
 - **Aviso** si una estructura tiene una DataVersion mayor que la de los recursos cargados.
 
+## Atlas y modelos (`feature/block-models`)
+
+- El atlas se construye en un worker con `OffscreenCanvas` (el de Deepslate necesita `document`), solo con las texturas que usa la paleta de la estructura.
+- Empaquetado en estantes en un cuadrado potencia de dos, hasta 4096 px.
+- Texturas animadas: primer fotograma. Texturas ausentes: casilla magenta y negra de Minecraft.
+- La capa de cada textura (opaca, recortada, translúcida) se deduce de su canal alfa.
+- UV normalizadas con v hacia abajo: el visor subirá el atlas sin invertirlo.
+
+Detalles en [RENDERING.md](RENDERING.md).
+
 ## Pendiente
 
-- Resolución de block states (`variants`, `multipart`) y modelos, atlas de texturas, animaciones
-  y colores de bioma (`feature/block-models`).
 - Resource packs del usuario superpuestos a los recursos por defecto (`feature/texture-packs`).
+- Patrones de estandartes, texto de carteles y colores del bioma real.

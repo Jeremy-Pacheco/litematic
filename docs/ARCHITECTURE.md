@@ -16,6 +16,7 @@ src/
 │   │   └── dialogs/     Ventanas modales (pendiente)
 │   ├── data/            Datos generados (tabla de IDs antiguos) y sus licencias
 │   ├── i18n/            Idiomas: diccionarios y traducción
+│   ├── models/          Preparación de modelos: Deepslate, atlas, capas, cobertura
 │   ├── materials/       Cálculo de materiales: bloque → ítems, agrupado, stacks
 │   ├── styles/          Variables de diseño (tokens.css)
 │   ├── stores/          Estado global reactivo (runas de Svelte 5)
@@ -49,6 +50,13 @@ docs/                    Documentación
 | `assets/zipReader.ts`                  | Extracción segura de ZIP: rutas, límites, CRC-32                                          |
 | `assets/minecraftJar.ts`               | Valida el client.jar, lee `version.json` y elige qué extraer                              |
 | `assets/assetCache.ts`                 | Caché IndexedDB (meta, idioma, archivos)                                                  |
+| `models/gameResources.ts`              | Block states y modelos del juego para Deepslate (caché, herencia resuelta)                |
+| `models/atlasPacking.ts`               | Empaquetado del atlas en estantes                                                         |
+| `models/renderLayer.ts`                | Capa de dibujo según el canal alfa                                                        |
+| `models/atlas.ts`                      | Atlas en worker (OffscreenCanvas), textura «falta textura»                                |
+| `models/bakeStates.ts`                 | Estado → quads por capa y lado, cobertura de lados, bloques especiales                    |
+| `models/bakeModels.ts`                 | Flujo completo: texturas usadas → atlas → estados                                         |
+| `managers/ModelManager.ts`             | API para el visor: prepara una paleta en un worker                                        |
 | `managers/AssetManager.ts`             | API de recursos del juego para el resto de la app; worker por jar                         |
 | `stores/assets.svelte.ts`              | Estado de los recursos para la interfaz y tabla de idioma                                 |
 | `components/dialogs/AssetsDialog`      | Diálogo «Recursos de Minecraft» (`<dialog>` nativo)                                       |

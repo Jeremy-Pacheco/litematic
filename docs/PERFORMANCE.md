@@ -130,6 +130,20 @@ Medido con `pnpm test:perf` (`tests/perf/mceditParser.perf.test.ts`): 512 × 256
 - Solo se descomprimen las entradas de la lista blanca (≈ 30 % de las entradas, 4,5 MB).
 - Al arrancar solo se leen de IndexedDB los metadatos y el idioma, no los 4 MB de archivos.
 
+## Preparación de modelos (`feature/block-models`)
+
+| Medición                                                             | Resultado                                   |
+| -------------------------------------------------------------------- | ------------------------------------------- |
+| Paleta de `house-69.schem` (40 estados), en Node                     | 6 ms (geometría)                            |
+| Paleta de un `.litematic` real (52 estados), en Node                 | 7 ms                                        |
+| Mismo `.schem` en Chrome: worker completo (IndexedDB + atlas + bake) | 20 ms; 365 ms incluyendo arrancar el worker |
+| Atlas resultante                                                     | 128 × 128 px                                |
+
+- Coste proporcional a los **estados de la paleta**, no a los bloques.
+- Los arrays de geometría y el atlas se **transfieren** sin copia.
+- Los 4 MB de recursos se leen de IndexedDB dentro del worker; no pasan por el hilo principal.
+- Deepslate y el worker de modelos aún **no entran en el build**: los usará el visor.
+
 ## Compilación
 
 Tras `feature/minecraft-assets`:

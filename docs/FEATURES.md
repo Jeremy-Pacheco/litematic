@@ -13,7 +13,7 @@ Leyenda: ✅ implementada · 🚧 en desarrollo · ⏳ pendiente
 | 5   | `feature/legacy-schematic-parser`  | Formato `.schematic` (MCEdit, IDs numéricos)                               | ✅     |
 | 6   | `feature/material-list`            | Lista de materiales                                                        | ✅     |
 | 7   | `feature/minecraft-assets`         | Carga de recursos desde el `client.jar` del usuario                        | ✅     |
-| 8   | `feature/block-models`             | Blockstates, modelos y atlas de texturas                                   | ⏳     |
+| 8   | `feature/block-models`             | Blockstates, modelos y atlas de texturas                                   | ✅     |
 | 9   | `feature/structure-viewer`         | Visor 3D                                                                   | ⏳     |
 | 10  | `feature/layer-system`             | Construcción por capas                                                     | ⏳     |
 | 11  | `feature/block-inspector`          | Selección e inspección de bloques                                          | ⏳     |
